@@ -2,6 +2,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const { getUsersByLetter, addUser } = require("./controllers/controller");
+// const supabase = require('../supabaseClient');
+
+const { runMigrations } = require("./migrations/runner");
+
+runMigrations();
 
 dotenv.config();
 const app = express();
@@ -14,5 +20,8 @@ app.get("/", (req, res) => {
   res.send("Backend running 🚀");
 });
 
-const PORT = process.env.PORT || 5000;
+app.get("/users/:letter", getUsersByLetter);
+app.post("/users", addUser);
+
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

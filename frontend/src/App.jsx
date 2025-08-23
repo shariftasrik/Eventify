@@ -27,7 +27,7 @@ import EditEvent from "./pages/Admin/EditEvent";
 import Analytics from "./pages/Admin/Analytics";
 
 // Components
-import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
+// import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
 
 // 404 page (fallback)
 const NotFound = () => (
