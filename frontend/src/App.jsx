@@ -1,35 +1,103 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Outlet } from "react-router-dom";
+import "./App.css";
+
+// Public pages
+import Home from "./pages/Home/Home";
+import Events from "./pages/Events/Events";
+import EventDetails from "./pages/EventDetails/EventDetails";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import ContactUs from "./pages/ContactUs/ContactUs";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+
+// Auth pages
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
+
+// Student pages
+import StudentDashboard from "./pages/Student/StudentDashboard";
+import MyEvents from "./pages/Student/MyEvents";
+import StudentProfile from "./pages/Student/StudentProfile";
+
+// Admin pages
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import ManageEvents from "./pages/Admin/ManageEvents";
+import CreateEvent from "./pages/Admin/CreateEvent";
+import EditEvent from "./pages/Admin/EditEvent";
+import Analytics from "./pages/Admin/Analytics";
+
+// Components
+import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
+
+// 404 page (fallback)
+const NotFound = () => (
+  <div style={{ padding: "2rem", textAlign: "center" }}>
+    <h1>404 - Page Not Found</h1>
+    <a href="/" style={{ color: "#ff8800" }}>Go Back Home</a>
+  </div>
+);
+
+// Layout for public pages
+const MainLayout = () => (
+  <>
+    <Navbar />
+    <main className="app-content">
+      <Outlet /> {/* nested public routes thakbe */}
+    </main>
+    <Footer />
+  </>
+);
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <Routes>
+        {/* Authentication */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+        {/* Student Dashboard (protected) */}
+        <Route
+          path="/student"
+          element={
+            // <ProtectedRoute role="student">
+              <StudentDashboard />
+            // </ProtectedRoute>
+          }
+        >
+          <Route path="my-events" element={<MyEvents />} />
+          <Route path="profile" element={<StudentProfile />} />
+        </Route>
+
+        {/* Admin Dashboard (protected) */}
+        <Route
+          path="/admin"
+          element={
+            // <ProtectedRoute role="admin">
+              <AdminDashboard />
+            // </ProtectedRoute>
+          }
+        >
+          <Route path="manage-events" element={<ManageEvents />} />
+          <Route path="create-event" element={<CreateEvent />} />
+          <Route path="edit-event/:id" element={<EditEvent />} />
+          <Route path="analytics" element={<Analytics />} />
+        </Route>
+
+        {/* Public routes */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetails />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+        </Route>
+
+        {/* Catch all */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+export default App;
