@@ -3,13 +3,19 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/events">Events</Link></li>
-        <li><Link to="/about-us">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-      </ul>
+    <nav className="hidden md:flex space-x-6">
+      <a href="#" className="hover:text-gray-500 transition-colors">
+        <Link to="/">Home</Link>
+      </a>
+      <a href="#" className="hover:text-gray-500 transition-colors">
+        <Link to="/events">Events</Link>
+      </a>
+      <a href="#" className="hover:text-gray-500 transition-colors">
+        <Link to="/about-us">About</Link>
+      </a>
+      <a href="#" className="hover:text-gray-500 transition-colors">
+        <Link to="/contact">Contact</Link>
+      </a>
     </nav>
   );
 };
