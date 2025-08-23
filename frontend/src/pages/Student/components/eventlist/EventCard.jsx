@@ -1,4 +1,4 @@
-import getImgUrl from "../../utils/event_utils";
+import getImgUrl from "../../../../utils/event_utils";
 
 export default function EventCard({ event, onAdd, onRemove, isAddCart }) {
   if (!event) return null;

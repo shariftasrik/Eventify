@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getAllEvents } from "../../data/events";
+import getAllEvents from "../../../../utils/event_utils" 
 import EventCard from "./EventCard";
 import RegisteredEvents from "../RegisteredEvents";
 
