@@ -15,12 +15,14 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 
 // Student pages
+
 import MyEvents from "./pages/Student/MyEvents";
 import StudentDashboard from "./pages/Student/StudentDashboard";
 import StudentProfile from "./pages/Student/StudentProfile";
 
 // Admin pages
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminHome from "./pages/Admin/AdminHome";
 import Analytics from "./pages/Admin/Analytics";
 import CreateEvent from "./pages/Admin/CreateEvent";
 import EditEvent from "./pages/Admin/EditEvent";
@@ -84,6 +86,7 @@ function App() {
             // </ProtectedRoute>
           }
         >
+          <Route index element={<AdminHome />} />
           <Route path="manage-events" element={<ManageEvents />} />
           <Route path="create-event" element={<CreateEvent />} />
           <Route path="edit-event/:id" element={<EditEvent />} />
