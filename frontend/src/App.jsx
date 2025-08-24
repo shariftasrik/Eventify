@@ -27,6 +27,9 @@ import ManageEvents from "./pages/Admin/ManageEvents";
 
 // Components
 import Header from "./components/Header";
+import Banner from "./components/Banner";
+import NewsLetter from "./components/NewsLetter";
+
 
 // 404 page (fallback)
 const NotFound = () => (
@@ -42,9 +45,11 @@ const NotFound = () => (
 const MainLayout = () => (
   <>
     <Header />
+
     <main className="app-content">
       <Outlet /> {/* nested public routes thakbe */}
     </main>
+
     <Footer />
   </>
 );
