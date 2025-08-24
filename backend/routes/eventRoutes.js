@@ -3,6 +3,7 @@ const express = require("express");
 function createEventRouter(eventController) {
   const router = express.Router();
 
+
   // Events
   router.get("/", eventController.getAllEvents);
   router.post("/", eventController.createEvent);
@@ -17,14 +18,17 @@ function createEventRouter(eventController) {
   // Registrations
   router.post("/:eventId/register", eventController.registerForAnEvent);
   router.delete("/:eventId/unregister", eventController.unregisterFromAnEvent);
+
   router.get("/:eventId/registrations", eventController.getEventRegistrations);
   router.put(
     "/:eventId/registrations/:userId/attendance",
     eventController.updateEventAttendance
+
   );
 
   // User-specific
   router.get("/my-events", eventController.getMyEventRegistrations);
+
 
   return router;
 }

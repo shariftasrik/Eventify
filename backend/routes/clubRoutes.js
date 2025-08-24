@@ -3,6 +3,7 @@ const express = require("express");
 function createClubRouter(clubController) {
   const router = express.Router();
 
+
   // Clubs
   router.get("/", clubController.getAllActiveClubs);
   router.post("/", clubController.createClub);
@@ -25,6 +26,7 @@ function createClubRouter(clubController) {
   router.put("/:clubId/roles/:roleId", clubController.updateClubRole);
 
   // Permissions
+
   router.get("/roles/permissions", clubController.getAllPermissions);
 
   return router;

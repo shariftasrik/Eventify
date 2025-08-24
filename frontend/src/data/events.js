@@ -7,7 +7,9 @@ const events = [
     date: "30.08.2025",
     perticipant: 72,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST CSE Society",
+    location: "AUST CSE Building – Lab 7B01"
   },
   {
     id: crypto.randomUUID(),
@@ -17,7 +19,9 @@ const events = [
     date: "27.08.2025",
     perticipant: 38,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST FinTech & Blockchain Club (BBA × CSE)",
+    location: "AUST Business School – Room 6C07"
   },
   {
     id: crypto.randomUUID(),
@@ -27,7 +31,9 @@ const events = [
     date: "05.08.2025",
     perticipant: 64,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST CSE Programming Club",
+    location: "AUST CSE Building – Lab 7B03"
   },
   {
     id: crypto.randomUUID(),
@@ -37,7 +43,9 @@ const events = [
     date: "12.08.2025",
     perticipant: 47,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST Architecture & Design Club",
+    location: "AUST Architecture Building – Studio"
   },
   {
     id: crypto.randomUUID(),
@@ -47,7 +55,9 @@ const events = [
     date: "01.09.2025",
     perticipant: 58,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST CSE Developers Club",
+    location: "AUST Multipurpose Hall"
   },
   {
     id: crypto.randomUUID(),
@@ -57,7 +67,9 @@ const events = [
     date: "22.07.2025",
     perticipant: 81,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST Sports Analytics Club",
+    location: "AUST Main Auditorium"
   },
   {
     id: crypto.randomUUID(),
@@ -67,7 +79,9 @@ const events = [
     date: "30.08.2025",
     perticipant: 29,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST Architecture Innovation Forum",
+    location: "AUST Architecture Building – Studio"
   },
   {
     id: crypto.randomUUID(),
@@ -77,7 +91,9 @@ const events = [
     date: "09.07.2025",
     perticipant: 54,
     newest: false,
-    isRegistered: true
+    isRegistered: true,
+    organizer: "AUST CSE Programming Club",
+    location: "AUST CSE Building – Lab 7B01"
   },
   {
     id: crypto.randomUUID(),
@@ -87,7 +103,9 @@ const events = [
     date: "14.09.2025",
     perticipant: 33,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST BBA Entrepreneurship & Innovation Club",
+    location: "AUST Business Incubation Center"
   },
   {
     id: crypto.randomUUID(),
@@ -97,7 +115,9 @@ const events = [
     date: "24.08.2025",
     perticipant: 44,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST EEE Association",
+    location: "AUST EEE Building – Seminar Hall"
   },
   {
     id: crypto.randomUUID(),
@@ -107,7 +127,9 @@ const events = [
     date: "03.09.2025",
     perticipant: 61,
     newest: true,
-    isRegistered: true
+    isRegistered: true,
+    organizer: "AUST CSE Developers Club",
+    location: "AUST Multipurpose Hall"
   },
   {
     id: crypto.randomUUID(),
@@ -117,9 +139,10 @@ const events = [
     date: "19.07.2025",
     perticipant: 76,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST DevOps & Cloud Club (CSE × EEE)",
+    location: "AUST EEE Building – Lab 4A03"
   },
-  
   {
     id: crypto.randomUUID(),
     photo: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
@@ -128,7 +151,9 @@ const events = [
     date: "06.07.2025",
     perticipant: 57,
     newest: false,
-    isRegistered: true
+    isRegistered: true,
+    organizer: "AUST IPE Society",
+    location: "AUST Library – Conference Room"
   },
   {
     id: crypto.randomUUID(),
@@ -138,7 +163,9 @@ const events = [
     date: "11.09.2025",
     perticipant: 88,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST CSE AI Research Group",
+    location: "AUST Main Auditorium"
   },
   {
     id: crypto.randomUUID(),
@@ -148,7 +175,9 @@ const events = [
     date: "17.08.2025",
     perticipant: 26,
     newest: false,
-    isRegistered: true
+    isRegistered: true,
+    organizer: "AUST Architecture & HCI Club",
+    location: "AUST Architecture Building – Studio 1"
   },
   {
     id: crypto.randomUUID(),
@@ -158,7 +187,9 @@ const events = [
     date: "21.09.2025",
     perticipant: 49,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST BBA FinTech Club",
+    location: "AUST Business School – Lecture Hall B105"
   },
   {
     id: crypto.randomUUID(),
@@ -168,7 +199,9 @@ const events = [
     date: "13.07.2025",
     perticipant: 91,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST Cybersecurity Club (CSE)",
+    location: "AUST CSE Building – Network & Security Lab"
   },
   {
     id: crypto.randomUUID(),
@@ -178,7 +211,9 @@ const events = [
     date: "26.08.2025",
     perticipant: 62,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST Robotics Club (EEE × Mecha)",
+    location: "AUST Mechanical Workshop – Robotics Lab"
   },
   {
     id: crypto.randomUUID(),
@@ -188,7 +223,9 @@ const events = [
     date: "02.09.2025",
     perticipant: 41,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST IoT & Embedded Systems Club (EEE)",
+    location: "AUST EEE Building – Lab 212"
   },
   {
     id: crypto.randomUUID(),
@@ -198,7 +235,9 @@ const events = [
     date: "31.07.2025",
     perticipant: 73,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST Civil Engineering Society × CSE Data Group",
+    location: "AUST Civil Annex – Seminar Room"
   },
   {
     id: crypto.randomUUID(),
@@ -208,7 +247,9 @@ const events = [
     date: "08.08.2025",
     perticipant: 24,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST BBA & CSE Ethics Forum",
+    location: "AUST Multipurpose Hall"
   },
   {
     id: crypto.randomUUID(),
@@ -218,7 +259,9 @@ const events = [
     date: "10.09.2025",
     perticipant: 66,
     newest: true,
-    isRegistered: true
+    isRegistered: true,
+    organizer: "AUST FinTech & Blockchain Club",
+    location: "AUST CSE Building – Lab 303"
   },
   {
     id: crypto.randomUUID(),
@@ -228,7 +271,9 @@ const events = [
     date: "20.07.2025",
     perticipant: 39,
     newest: false,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST IPE & Innovation Society",
+    location: "AUST Innovation Lab"
   },
   {
     id: crypto.randomUUID(),
@@ -238,7 +283,9 @@ const events = [
     date: "07.09.2025",
     perticipant: 95,
     newest: true,
-    isRegistered: false
+    isRegistered: false,
+    organizer: "AUST CSE Society × All Dept. Clubs",
+    location: "AUST Main Auditorium & CSE Labs"
   },
 ];
 

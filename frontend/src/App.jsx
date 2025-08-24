@@ -5,10 +5,16 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
+
 import EventDetails from "./pages/EventDetails/EventDetails";
 import Events from "./pages/Events/Events";
 import Home from "./pages/Home/Home";
 import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
+
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
+
 
 // Auth pages
 import Login from "./pages/Auth/Login";
@@ -29,9 +35,15 @@ import EditEvent from "./pages/Admin/EditEvent";
 import ManageEvents from "./pages/Admin/ManageEvents";
 
 // Components
+
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import NewsLetter from "./components/NewsLetter";
+
+
+
+// import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
+
 
 // 404 page (fallback)
 const NotFound = () => (
