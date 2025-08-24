@@ -10,11 +10,9 @@ import EventDetails from "./pages/EventDetails/EventDetails";
 import Events from "./pages/Events/Events";
 import Home from "./pages/Home/Home";
 import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
+import FaqChatbot from "./pages/FAQChatbot/FAQChatbot";
 
 import Navbar from "./components/Navbar/Navbar";
-
-
-
 
 // Auth pages
 import Login from "./pages/Auth/Login";
@@ -40,10 +38,7 @@ import Header from "./components/Header";
 import Banner from "./components/Banner";
 import NewsLetter from "./components/NewsLetter";
 
-
-
 // import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
-
 
 // 404 page (fallback)
 const NotFound = () => (
@@ -112,6 +107,7 @@ function App() {
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/faq" element={<FaqChatbot />} />
         </Route>
         <Route path="/verify-email" element={<VerifyEmailPage />} />
 

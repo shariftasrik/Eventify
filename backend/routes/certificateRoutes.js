@@ -1,4 +1,4 @@
-import express from "express";
+const express = require("express");
 
 function createCertificateRouter(certificateController) {
   const router = express.Router();

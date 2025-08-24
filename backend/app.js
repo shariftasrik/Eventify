@@ -3,12 +3,18 @@ const cors = require("cors");
 const createAuthRouter = require("./routes/authRoutes");
 const createEventRouter = require("./routes/eventRoutes");
 const createClubRouter = require("./routes/clubRoutes");
+const createFaqRouter = require("./routes/faqRoutes");
+const createCertificateRouter = require("./routes/certificateRoutes");
 const AuthController = require("./controllers/authController");
 const EventController = require("./controllers/eventController");
 const ClubController = require("./controllers/clubController");
+const FaqController = require("./controllers/faqController");
+const CertificateController = require("./controllers/certificateController");
 const UserService = require("./services/userService");
 const EventService = require("./services/eventService");
 const ClubService = require("./services/clubService");
+const FaqService = require("./services/faqService");
+const CertificateService = require("./services/certificateService");
 const db = require("./config/supabaseClient");
 
 // Controllers
@@ -27,20 +33,28 @@ app.get("/", (req, res) => {
 
 //Dependency injection
 const userService = new UserService(db);
-const eventService = new EventService(db); //////////////////////eta dkhte hbe abr
+const eventService = new EventService(db);
 const clubService = new ClubService(db);
+const faqService = new FaqService(db);
+const certificateService = new CertificateService(db);
 
 const authController = new AuthController(userService);
 const eventController = new EventController(eventService);
 const clubController = new ClubController(clubService);
+const faqController = new FaqController(faqService);
+const certificateController = new CertificateController(certificateService);
 
 const authRouter = createAuthRouter(authController);
 const eventRouter = createEventRouter(eventController);
 const clubRouter = createClubRouter(clubController);
+const faqRouter = createFaqRouter(faqController);
+const certificateRouter = createCertificateRouter(certificateController);
 
 // API routes
 app.use("/auth", authRouter);
 app.use("/events", eventRouter);
 app.use("/clubs", clubRouter);
+app.use("/faqs", faqRouter);
+app.use("/certificates", certificateRouter);
 
 module.exports = app;

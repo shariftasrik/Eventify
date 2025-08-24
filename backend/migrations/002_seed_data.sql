@@ -72,7 +72,66 @@ INSERT INTO events (title, description, event_date, start_time, end_time, locati
 -- ===============================
 -- Seed: FAQs
 -- ===============================
-INSERT INTO faqs (question, answer, category, keywords) VALUES
-('How do I register for an event?', 'Go to the event page and click "Register"', 'Registration', ARRAY['register', 'event', 'signup']),
-('Can I cancel my registration?', 'Yes, click "Unregister" on your registered events page', 'Registration', ARRAY['cancel', 'unregister', 'event']),
-('Who can create events?', 'Only club admins or presidents can create events', 'Event Management', ARRAY['create', 'event', 'admin']);
+
+INSERT INTO faqs (question, answer, category, keywords, is_active)
+VALUES
+('How can I register for an event?', 
+ 'You can register for any active event through the event registration page on our platform. Make sure you are logged in.', 
+ 'Event Registration', 
+ ARRAY['register','signup','event','participate'], 
+ TRUE),
+
+('Can I cancel my event registration?', 
+ 'Yes, you can cancel your registration before the event registration deadline from your profile.', 
+ 'Event Registration', 
+ ARRAY['cancel','registration','withdraw','event'], 
+ TRUE),
+
+('How can I get my participation certificate?', 
+ 'After attending an event, you can download your participation certificate from your profile under "My Certificates".', 
+ 'Certificates', 
+ ARRAY['certificate','download','participation','event'], 
+ TRUE),
+
+('How do I reset my password?', 
+ 'Click on "Forgot Password" on the login page and follow the instructions to reset your password.', 
+ 'Account', 
+ ARRAY['reset','password','forgot','account'], 
+ TRUE),
+
+('How can I become a club member?', 
+ 'You can apply to join a club by visiting the club page and clicking on "Join Club". Approval depends on the club admin.', 
+ 'Clubs', 
+ ARRAY['club','membership','join','apply'], 
+ TRUE),
+
+('Who can generate certificates for an event?', 
+ 'Only the club admin can generate certificates for event attendees after the event is completed.', 
+ 'Certificates', 
+ ARRAY['generate','certificate','admin','event'], 
+ TRUE),
+
+('Is there any fee to attend events?', 
+ 'Some events may require a fee. Check the event details for information about fees and payment methods.', 
+ 'Event Details', 
+ ARRAY['fee','cost','price','event'], 
+ TRUE),
+
+('How do I update my profile information?', 
+ 'Go to your profile page and click on "Edit Profile" to update your personal information.', 
+ 'Account', 
+ ARRAY['update','profile','edit','account'], 
+ TRUE),
+
+('Can I attend multiple events at the same time?', 
+ 'No, you can only register for events that do not overlap in timing with your other registered events.', 
+ 'Event Registration', 
+ ARRAY['multiple','events','time','overlap'], 
+ TRUE),
+
+('How do I contact the club for queries?', 
+ 'You can contact the club using the email or phone number provided on the club page.', 
+ 'Clubs', 
+ ARRAY['contact','club','query','help'], 
+ TRUE);
+
