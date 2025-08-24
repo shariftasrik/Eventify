@@ -7,12 +7,16 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 -- =====================================
 -- Create custom types
 -- =====================================
-CREATE TYPE user_role AS ENUM ('student', 'admin');
+CREATE TYPE user_role AS ENUM ('student', 'club_member','admin');
 CREATE TYPE event_status AS ENUM ('draft', 'published', 'cancelled', 'completed');
 CREATE TYPE attendance_status AS ENUM ('registered', 'attended', 'no_show', 'cancelled');
 CREATE TYPE payment_status AS ENUM ('pending', 'paid', 'waived', 'refunded');
 CREATE TYPE notification_type AS ENUM ('event_reminder', 'registration_confirmation', 'event_update', 'event_cancellation', 'general');
 CREATE TYPE entity_type AS ENUM ('event', 'user', 'club', 'registration');
+
+
+
+
 
 -- =====================================
 -- 1. USERS TABLE
@@ -31,9 +35,8 @@ CREATE TABLE users (
     department VARCHAR(100),
     year_of_study INTEGER,
     profile_image VARCHAR(255),
-    is_active BOOLEAN DEFAULT TRUE,
+    email_verification_token VARCHAR(255),
     email_verified BOOLEAN DEFAULT FALSE,
-    last_login TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -41,8 +44,9 @@ CREATE TABLE users (
 -- Indexes
 CREATE INDEX idx_users_email ON users(email);
 CREATE INDEX idx_users_username ON users(username);
-CREATE INDEX idx_users_role ON users(role);
+-- CREATE INDEX idx_users_role ON users(role);
 CREATE INDEX idx_users_uuid ON users(uuid);
+
 
 -- =====================================
 -- 2. CLUBS TABLE
@@ -67,38 +71,50 @@ CREATE INDEX idx_clubs_name ON clubs(name);
 CREATE INDEX idx_clubs_active ON clubs(is_active);
 CREATE INDEX idx_clubs_uuid ON clubs(uuid);
 
+
 -- =====================================
--- 3. CLUB_ADMINS TABLE
+CREATE TABLE club_roles (
+  id INTEGER PRIMARY KEY,
+  club_id INTEGER NOT NULL REFERENCES clubs(id) ON DELETE CASCADE,
+  name VARCHAR NOT NULL -- 'admin', 'president', 'vice_president', 'general_member', 'executive_member'
+);
+
+-- Table: permissions
+CREATE TABLE permissions (
+  id SERIAL PRIMARY KEY,
+  code VARCHAR NOT NULL, -- e.g., 'VIEW_REPORTS', 'EDIT_PRODUCTS', etc.
+  description TEXT
+);
+
+-- Table: role_permissions
+CREATE TABLE role_permissions (
+  club_role_id INTEGER NOT NULL,
+  permission_id INTEGER NOT NULL,
+  FOREIGN KEY (club_role_id) REFERENCES club_roles(id),
+  FOREIGN KEY (permission_id) REFERENCES permissions(id),
+  PRIMARY KEY (club_role_id, permission_id)
+);
 -- =====================================
-CREATE TABLE club_admins (
+
+
+-- =====================================
+-- 3. CLUB_members TABLE
+-- =====================================
+CREATE TABLE club_members (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     club_id INTEGER NOT NULL REFERENCES clubs(id) ON DELETE CASCADE,
+    club_role_id INTEGER NOT NULL REFERENCES club_roles(id) ON DELETE CASCADE,
     assigned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     assigned_by INTEGER REFERENCES users(id) ON DELETE SET NULL,
     is_active BOOLEAN DEFAULT TRUE,
-    CONSTRAINT unique_user_club UNIQUE (user_id, club_id)
+    CONSTRAINT unique_user_club_role UNIQUE (user_id, club_id, club_role_id)
 );
 
-CREATE INDEX idx_club_admins_user ON club_admins(user_id);
-CREATE INDEX idx_club_admins_club ON club_admins(club_id);
+CREATE INDEX idx_club_members_user ON club_members(user_id);
+CREATE INDEX idx_club_members_club ON club_members(club_id);
+CREATE INDEX idx_club_members_role ON club_members(club_role_id);
 
--- =====================================
--- 4. EVENT CATEGORIES TABLE
--- =====================================
-CREATE TABLE event_categories (
-    id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
-    name VARCHAR(50) NOT NULL UNIQUE,
-    description TEXT,
-    color_code VARCHAR(7) DEFAULT '#007bff',
-    icon VARCHAR(50),
-    is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE INDEX idx_event_categories_name ON event_categories(name);
-CREATE INDEX idx_event_categories_active ON event_categories(is_active);
 
 -- =====================================
 -- 5. EVENTS TABLE
@@ -118,7 +134,6 @@ CREATE TABLE events (
     current_participants INTEGER DEFAULT 0,
     registration_deadline TIMESTAMP,
     event_image VARCHAR(255),
-    category_id INTEGER REFERENCES event_categories(id) ON DELETE SET NULL,
     club_id INTEGER NOT NULL REFERENCES clubs(id) ON DELETE CASCADE,
     created_by INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     status event_status DEFAULT 'published',
@@ -135,7 +150,6 @@ CREATE TABLE events (
 CREATE INDEX idx_events_date ON events(event_date);
 CREATE INDEX idx_events_status ON events(status);
 CREATE INDEX idx_events_club ON events(club_id);
-CREATE INDEX idx_events_category ON events(category_id);
 CREATE INDEX idx_events_created_by ON events(created_by);
 CREATE INDEX idx_events_featured ON events(is_featured);
 CREATE INDEX idx_events_deadline ON events(registration_deadline);
