@@ -12,8 +12,8 @@ import Home from "./pages/Home/Home";
 import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
 
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
+
+
 
 
 // Auth pages
