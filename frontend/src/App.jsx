@@ -9,6 +9,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
 
 // Auth pages
 import Login from "./pages/Auth/Login";
@@ -27,13 +28,15 @@ import EditEvent from "./pages/Admin/EditEvent";
 import Analytics from "./pages/Admin/Analytics";
 
 // Components
-import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
+// import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
 
 // 404 page (fallback)
 const NotFound = () => (
   <div style={{ padding: "2rem", textAlign: "center" }}>
     <h1>404 - Page Not Found</h1>
-    <a href="/" style={{ color: "#ff8800" }}>Go Back Home</a>
+    <a href="/" style={{ color: "#ff8800" }}>
+      Go Back Home
+    </a>
   </div>
 );
 
@@ -61,7 +64,7 @@ function App() {
           path="/student"
           element={
             // <ProtectedRoute role="student">
-              <StudentDashboard />
+            <StudentDashboard />
             // </ProtectedRoute>
           }
         >
@@ -74,7 +77,7 @@ function App() {
           path="/admin"
           element={
             // <ProtectedRoute role="admin">
-              <AdminDashboard />
+            <AdminDashboard />
             // </ProtectedRoute>
           }
         >
@@ -92,6 +95,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
         </Route>
+        <Route path="/verify-email" element={<VerifyEmailPage />} />
 
         {/* Catch all */}
         <Route path="*" element={<NotFound />} />
