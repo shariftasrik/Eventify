@@ -1,13 +1,12 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React from "react"
+import { Outlet } from "react-router-dom"
 
 const AdminDashboard = () => {
-  return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <Outlet />
-    </div>
-  );
-};
+    return (
+        <div className="min-h-screen bg-slate-50">
+            <Outlet />
+        </div>
+    )
+}
 
-export default AdminDashboard;
+export default AdminDashboard
