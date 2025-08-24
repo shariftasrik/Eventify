@@ -62,5 +62,82 @@ Supports both **MongoDB** and SQL-style schemas:
 
 ---
 
-## ⚡ Architecture
+## 🧭 API Endpoints
+
+Base URL: `http://localhost:5000` (or your deployed backend)
+
+---
+
+### 🔐 Auth Routes (`/auth`)
+- `POST /auth/signup` → Create a new user
+- `POST /auth/login` → Login with email/username + password
+- `POST /auth/logout` → Logout user (stateless)
+- `GET /auth/verify-email?token=...` → Verify email with token
+
+---
+
+### 🎫 Event Routes (`/events`)
+- `GET /events` → Get all events
+- `POST /events` → Create a new event
+- `GET /events/:eventId` → Get event by ID
+- `PUT /events/:eventId` → Update an event
+- `PUT /events/:eventId/status` → Update event status (published/draft/etc.)
+- `PUT /events/:eventId/feature` → Toggle featured flag
+
+**Attendees**
+- `GET /events/:eventId/attendees` → List all attendees for an event
+
+**Registrations**
+- `POST /events/:eventId/register` → Register a user for an event  
+- `DELETE /events/:eventId/unregister` → Cancel/unregister from an event  
+- `GET /events/:eventId/registrations` → Get all registrations for an event  
+- `PUT /events/:eventId/registrations/:userId/attendance` → Update attendance status  
+
+**User-specific**
+- `GET /events/my-events` → Get the logged-in user’s event registrations
+
+---
+
+### 👥 Club Routes (`/clubs`)
+- `GET /clubs` → Get all active clubs
+- `POST /clubs` → Create a club
+- `GET /clubs/my-clubs` → Get logged-in user’s club memberships
+- `GET /clubs/:clubId` → Get a club by ID
+- `PUT /clubs/:clubId` → Update a club
+
+**Members**
+- `POST /clubs/:clubId/members` → Add a member to a club
+- `GET /clubs/:clubId/members` → List members of a club
+- `PUT /clubs/:clubId/members/:userId` → Update a club member’s role/status
+
+**Roles & Permissions**
+- `GET /clubs/:clubId/roles` → Get all roles in a club
+- `POST /clubs/:clubId/roles` → Create a role in a club
+- `PUT /clubs/:clubId/roles/:roleId` → Update a role
+- `GET /clubs/roles/permissions` → Get all available permissions
+
+---
+
+### ❓ FAQ Routes (`/faqs`)
+- `GET /faqs` → Get all FAQs
+- `POST /faqs/search` → Search FAQs (chatbot-style)
+
+---
+
+### 🎓 Certificate Routes (`/certificates`)
+- `GET /certificates` → Get all certificates (implementation dependent)
+- `POST /certificates` → Issue a certificate
+- `GET /certificates/:id` → Get certificate by ID
+
+---
+
+## 🔑 Status Codes
+- `200 OK` → Request successful
+- `201 Created` → Resource created
+- `400 Bad Request` → Validation or client error
+- `401 Unauthorized` → Authentication required/failed
+- `403 Forbidden` → Not enough permissions
+- `404 Not Found` → Resource not found
+- `500 Internal Server Error` → Unexpected server error
+
 
