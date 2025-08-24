@@ -11,6 +11,7 @@ CREATE TYPE user_role AS ENUM ('student', 'club_member','admin');
 CREATE TYPE event_status AS ENUM ('draft', 'published', 'cancelled', 'completed');
 CREATE TYPE attendance_status AS ENUM ('registered', 'attended', 'no_show', 'cancelled');
 CREATE TYPE payment_status AS ENUM ('pending', 'paid', 'waived', 'refunded');
+CREATE TYPE payment_method AS ENUM ('cash', 'credit_card', 'paypal', 'bank_transfer', 'sslcommerz');
 CREATE TYPE notification_type AS ENUM ('event_reminder', 'registration_confirmation', 'event_update', 'event_cancellation', 'general');
 CREATE TYPE entity_type AS ENUM ('event', 'user', 'club', 'registration');
 
@@ -171,6 +172,7 @@ CREATE TABLE event_registrations (
     special_requirements TEXT,
     emergency_contact VARCHAR(100),
     payment_status payment_status DEFAULT 'pending',
+    payment_method payment_method DEFAULT 'cash',
     certificate_generated BOOLEAN DEFAULT FALSE,
     certificate_download_count INTEGER DEFAULT 0,
     notes TEXT,
