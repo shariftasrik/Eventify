@@ -13,9 +13,6 @@ import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
 import FaqChatbot from "./pages/FAQChatbot/FAQChatbot";
 
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
-
 
 // Auth pages
 import Login from "./pages/Auth/Login";
@@ -41,10 +38,7 @@ import Header from "./components/Header";
 import Banner from "./components/Banner";
 import NewsLetter from "./components/NewsLetter";
 
-
-
 // import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
-
 
 // 404 page (fallback)
 const NotFound = () => (

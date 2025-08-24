@@ -63,14 +63,32 @@ export default function Header() {
               aria-expanded={isMenuOpen}
               onClick={() => setIsMenuOpen(true)}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-gray-700"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
 
-            <a href="#" className="flex items-center gap-3 font-extrabold tracking-tight">
+            <a
+              href="#"
+              className="flex items-center gap-3 font-extrabold tracking-tight"
+            >
               <span className="relative inline-flex">
-                <img src={Logo} alt="Eventify Logo" className="h-8 w-8 md:h-10 md:w-10 object-contain" />
+                <img
+                  src={Logo}
+                  alt="Eventify Logo"
+                  className="h-8 w-8 md:h-10 md:w-10 object-contain"
+                />
               </span>
               <span className="text-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">
                 EVENTIFY
@@ -80,7 +98,11 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:block">
-            <Navbar variant="desktop" role={role} onRoleChange={handleRoleChange} />
+            <Navbar
+              variant="desktop"
+              role={role}
+              onRoleChange={handleRoleChange}
+            />
           </nav>
 
           {/* Right: profile + Login/Logout button */}
@@ -101,7 +123,12 @@ export default function Header() {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM12 14a7 7 0 0 0-7 7h14a7 7 0 0 0-7-7z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM12 14a7 7 0 0 0-7 7h14a7 7 0 0 0-7-7z"
+                  />
                 </svg>
               </button>
 
@@ -145,7 +172,6 @@ export default function Header() {
               )}
             </div>
 
-            
             <button
               onClick={isAuthed ? logout : login}
               className="rounded-xl bg-slate-900 text-white px-4 py-2 text-sm font-semibold hover:opacity-95"
@@ -161,7 +187,9 @@ export default function Header() {
       {/* Mobile sidebar */}
       <div
         id="mobile-sidebar"
-        className={`fixed inset-0 z-50 md:hidden ${isMenuOpen ? "" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-50 md:hidden ${
+          isMenuOpen ? "" : "pointer-events-none"
+        }`}
         aria-hidden={!isMenuOpen}
       >
         <div
@@ -172,7 +200,9 @@ export default function Header() {
         />
         <aside
           className={`absolute left-0 top-0 h-full w-72 max-w-[85%] bg-white/95 backdrop-blur-xl shadow-2xl flex flex-col border-r border-white/20
-                      transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
+                      transition-transform duration-300 ${
+                        isMenuOpen ? "translate-x-0" : "-translate-x-full"
+                      }`}
           role="dialog"
           aria-modal="true"
         >
@@ -186,14 +216,29 @@ export default function Header() {
               className="p-2 rounded-xl hover:bg-white/80"
               onClick={() => setIsMenuOpen(false)}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-gray-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
 
           <div className="px-4 py-4 overflow-y-auto flex-1">
-            <Navbar variant="mobile" role={role} onRoleChange={handleRoleChange} />
+            <Navbar
+              variant="mobile"
+              role={role}
+              onRoleChange={handleRoleChange}
+            />
 
             <div className="mt-4">
               <button
