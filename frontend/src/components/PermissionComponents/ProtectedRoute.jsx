@@ -14,7 +14,7 @@ import useUserStore from '../../stores/userStore';
 const ProtectedRoute = ({ 
   children, 
   requiredPermission, 
-  fallbackPath = '/sales-interface',
+  fallbackPath = '/',
   fallbackComponent = null 
 }) => {
   // Get authentication state and permission checking from userStore

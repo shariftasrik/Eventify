@@ -18,11 +18,21 @@ export default function Navbar({
 
   return (
     <nav className={containerClass}>
-      <Link to="/" className={linkClass}>Home</Link>
-      <Link to="/events" className={linkClass}>Events</Link>
-      <Link to="/about-us" className={linkClass}>About</Link>
-      <Link to="/contact" className={linkClass}>Contact</Link>
-
+      <Link to="/" className={linkClass}>
+        Home
+      </Link>
+      <Link to="/events" className={linkClass}>
+        Events
+      </Link>
+      <Link to="/about-us" className={linkClass}>
+        About
+      </Link>
+      <Link to="/contact" className={linkClass}>
+        Contact
+      </Link>
+      <Link to="/faq" className={linkClass}>
+        FAQ
+      </Link>
 
       {isMobile ? (
         <div className="my-2 h-px bg-slate-200" />
@@ -31,7 +41,9 @@ export default function Navbar({
       )}
 
       {/* View as (dropdown) */}
-      <div className={isMobile ? "flex flex-col gap-1" : "flex items-center gap-2"}>
+      <div
+        className={isMobile ? "flex flex-col gap-1" : "flex items-center gap-2"}
+      >
         {!isMobile && <span className="text-sm text-slate-500">View as</span>}
         <select
           value={role}
