@@ -99,8 +99,8 @@ function EventSlideCard({ event }) {
       </div>
 
       {/* body */}
-      <div className="p-5 sm:p-6 flex flex-col">
-        <div className="rounded-xl bg-white/95 backdrop-blur border border-slate-200 p-4 shadow">
+      <div className="p-5 sm:p-3 flex flex-col items-center justify-center">
+        <div className="rounded-xl   bg-white/95 backdrop-blur border border-slate-200 p-4 shadow">
           <div className="font-semibold text-slate-900 line-clamp-2">{event.title}</div>
           <div className="mt-2 flex flex-wrap gap-2 text-xs text-slate-600">
             <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1">📅 {event.date}</span>

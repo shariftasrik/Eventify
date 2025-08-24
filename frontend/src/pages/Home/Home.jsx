@@ -76,7 +76,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/15" />
                 <div className=" inset-0 flex items-center justify-center p-5">
                   <div className="w-full max-w-3xl rounded-xl bg-white/95 backdrop-blur border border-white/60 p-4 shadow">
-                    <EventsCarousel events={all} autoPlay interval={5000}/>
+                    <EventsCarousel events={all} autoPlay interval={3500}/>
                   </div>
                 </div>
               </div>

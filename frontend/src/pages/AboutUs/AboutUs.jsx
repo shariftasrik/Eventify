@@ -44,9 +44,9 @@ export default function AboutUs() {
               {/* stats strip */}
               <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
-                  { label: "Clubs", value: "5+" },
+                  { label: "Clubs", value: "15+" },
                   { label: "Events", value: "50+" },
-                  { label: "Registrations", value: "500+" },
+                  { label: "Registrations", value: "900+" },
                   { label: "Satisfaction", value: "98%" },
                 ].map((s, i) => (
                   <Motion.div
@@ -180,7 +180,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ===== Timeline ===== */}
+      {/* Timeline */}
       <section className="py-10">
         <div className="container mx-auto max-w-6xl px-4">
           <Motion.div
@@ -228,7 +228,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ===== Team ===== */}
+      {/* Team  */}
       <section className="py-10">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 md:p-8">
@@ -280,7 +280,7 @@ export default function AboutUs() {
               ))}
             </div>
 
-            {/* FAQ (no JS, native details) */}
+            {/* FAQ  */}
             <div className="mt-10 grid md:grid-cols-2 gap-4">
               {[
                 {
