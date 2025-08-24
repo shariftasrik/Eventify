@@ -119,16 +119,7 @@ const events = [
     newest: false,
     isRegistered: false
   },
-  {
-    id: crypto.randomUUID(),
-    photo: "https://images.unsplash.com/photo-1592478411213-6153e4ebc696?w=600&h=400&fit=crop",
-    title: "AR/VR Design Innovation Challenge",
-    fee: 500,
-    date: "28.08.2025",
-    perticipant: 35,
-    newest: true,
-    isRegistered: false
-  },
+  
   {
     id: crypto.randomUUID(),
     photo: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
