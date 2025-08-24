@@ -5,7 +5,7 @@ import { getAllEvents } from "../../data/events.js";
 import EventCard from "../../components/student/eventlist/EventCard.jsx";
 import EventDetailsModal from "../../components/student/eventlist/EventDetailsModal.jsx";
 import FilterSidebar from "../../components/FilterSidebar.jsx";
-import Pagination from "../../components/Pagination.jsx"; // ← NEW
+import Pagination from "../../components/Pagination.jsx";
 
 export default function Events() {
   const [events, setEvents] = useState(getAllEvents());
@@ -56,7 +56,7 @@ export default function Events() {
     );
   };
 
-  // Filter + search + sort (no useMemo)
+ 
   let visible = [...events];
   const q = query.trim().toLowerCase();
   if (q) visible = visible.filter((e) => e.title.toLowerCase().includes(q));
@@ -79,7 +79,7 @@ export default function Events() {
     });
   }
 
-  // Reset to page 1 on inputs change
+
   useEffect(() => {
     setCurrentPage(1);
   }, [query, filters, sortKey, sortDir]);
@@ -156,7 +156,7 @@ export default function Events() {
                     event={event}
                     onOpenModal={openModal}
                     onRemove={cancelRegistration}
-                    isAddCart={event.isRegistered} // or isAddEvent if you renamed
+                    isAddCart={event.isRegistered} 
                   />
                 </motion.div>
               ))}

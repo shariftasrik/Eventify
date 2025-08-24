@@ -5,31 +5,40 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
+
 import EventDetails from "./pages/EventDetails/EventDetails";
 import Events from "./pages/Events/Events";
 import Home from "./pages/Home/Home";
+import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
+import FaqChatbot from "./pages/FAQChatbot/FAQChatbot";
+
+import Navbar from "./components/Navbar/Navbar";
 
 // Auth pages
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 
 // Student pages
+
 import MyEvents from "./pages/Student/MyEvents";
 import StudentDashboard from "./pages/Student/StudentDashboard";
 import StudentProfile from "./pages/Student/StudentProfile";
 
 // Admin pages
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminHome from "./pages/Admin/AdminHome";
 import Analytics from "./pages/Admin/Analytics";
 import CreateEvent from "./pages/Admin/CreateEvent";
 import EditEvent from "./pages/Admin/EditEvent";
 import ManageEvents from "./pages/Admin/ManageEvents";
 
 // Components
+
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import NewsLetter from "./components/NewsLetter";
 
+// import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
 
 // 404 page (fallback)
 const NotFound = () => (
@@ -84,6 +93,7 @@ function App() {
             // </ProtectedRoute>
           }
         >
+          <Route index element={<AdminHome />} />
           <Route path="manage-events" element={<ManageEvents />} />
           <Route path="create-event" element={<CreateEvent />} />
           <Route path="edit-event/:id" element={<EditEvent />} />
@@ -97,7 +107,9 @@ function App() {
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/faq" element={<FaqChatbot />} />
         </Route>
+        <Route path="/verify-email" element={<VerifyEmailPage />} />
 
         {/* Catch all */}
         <Route path="*" element={<NotFound />} />

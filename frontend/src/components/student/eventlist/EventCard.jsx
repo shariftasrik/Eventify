@@ -1,3 +1,6 @@
+// ✅ Add these icons
+import { MapPin, Building2 } from "lucide-react";
+
 // Helper to parse "DD.MM.YYYY" into a Date at local midnight
 function parseDMY(dmy) {
   if (!dmy) return new Date(0);
@@ -13,10 +16,10 @@ export default function EventCard({ event, onOpenModal, onRemove, isAddEvent }) 
   const booked = Math.max(0, totalSeats - seatsLeft);
   const bookedPct = Math.min(100, Math.round((booked / totalSeats) * 100));
 
-  // ----- NEW: detect past date (today is still allowed) -----
+  // detect past date (today is still allowed)
   const eventDate = parseDMY(event.date);
   const today = new Date();
-  today.setHours(0, 0, 0, 0); // compare at start of day
+  today.setHours(0, 0, 0, 0);
   const isPast = eventDate < today;
 
   const isFull = seatsLeft === 0;
@@ -60,12 +63,32 @@ export default function EventCard({ event, onOpenModal, onRemove, isAddEvent }) 
           {event.title}
         </h3>
 
-        <div className="mt-2 flex items-center justify-between">
+        {/* === NEW: organizer & location row === */}
+        <div className="mt-1 space-y-1 text-[13px] text-slate-600">
+          <div className="flex items-center gap-1.5">
+            <Building2 className="h-4 w-4 text-slate-500" aria-hidden="true" />
+            <span className="truncate" title={event.organizer || "AUST Club"}>
+              {event.organizer || "AUST Club"}
+            </span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <MapPin className="h-4 w-4 text-slate-500" aria-hidden="true" />
+            <span className="truncate" title={event.location || "AUST Campus"}>
+              {event.location || "AUST Campus"}
+            </span>
+          </div>
+        </div>
+        {/* === /NEW === */}
+
+        <div className="mt-3 flex items-center justify-between">
           <span className="inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-sm font-semibold text-white">
             {`Fee: ${event.fee} Tk`}
           </span>
-          {/* ----- NEW: red date if past ----- */}
-          <span className={`text-xs ${isPast ? "text-rose-600 font-semibold" : "text-green-500"}`}>
+          <span
+            className={`text-xs ${
+              isPast ? "text-rose-600 font-semibold" : "text-green-500"
+            }`}
+          >
             {event.date}
           </span>
         </div>
@@ -88,22 +111,18 @@ export default function EventCard({ event, onOpenModal, onRemove, isAddEvent }) 
         </div>
 
         <div className="mt-4">
-          {/* ----- NEW: Finished state overrides everything ----- */}
           {isPast ? (
             <button
               disabled
               aria-disabled="true"
-              className="w-full rounded-xl bg-rose-600 py-2 text-white opacity-80 cursor-not-allowed shadow
-                         focus:outline-none"
+              className="w-full rounded-xl bg-rose-600 py-2 text-white opacity-80 cursor-not-allowed shadow focus:outline-none"
             >
               Finished
             </button>
           ) : isAddEvent ? (
             <button
               onClick={() => onRemove(event.id)}
-              className="w-full rounded-xl bg-rose-600 py-2 text-white shadow
-                         transition-transform active:translate-y-[1px] focus:outline-none
-                         focus-visible:ring-2 focus-visible:ring-rose-400/60"
+              className="w-full rounded-xl bg-rose-600 py-2 text-white shadow transition-transform active:translate-y-[1px] focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/60"
             >
               Cancel Registration
             </button>
@@ -111,10 +130,7 @@ export default function EventCard({ event, onOpenModal, onRemove, isAddEvent }) 
             <button
               onClick={() => onOpenModal(event)}
               disabled={isFull}
-              className="w-full rounded-xl bg-gradient-to-b from-slate-900 to-slate-800
-                         py-2 text-white shadow transition-all active:translate-y-[1px]
-                         disabled:cursor-not-allowed disabled:from-slate-700 disabled:to-slate-700
-                         focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60"
+              className="w-full rounded-xl bg-gradient-to-b from-slate-900 to-slate-800 py-2 text-white shadow transition-all active:translate-y-[1px] disabled:cursor-not-allowed disabled:from-slate-700 disabled:to-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60"
             >
               {isFull ? "No Seat Left" : "Registration"}
             </button>
