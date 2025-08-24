@@ -116,8 +116,8 @@ export default function Events() {
         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-white via-indigo-50/30 to-purple-50/30" />
         <div className="relative z-10 container mx-auto max-w-7xl">
           <div className="flex items-end justify-center">
-            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">
-              All Events
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
+              All <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">Events</span>
             </h1>
           </div>
         </div>
