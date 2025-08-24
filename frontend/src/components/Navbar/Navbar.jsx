@@ -31,7 +31,7 @@ export default function Navbar({
         Contact
       </Link>
       <Link to="/faq" className={linkClass}>
-        FAQ-Chatbot
+        FAQ
       </Link>
 
       {isMobile ? (
