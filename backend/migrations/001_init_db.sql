@@ -222,6 +222,7 @@ CREATE TABLE certificates (
     event_title VARCHAR(200) NOT NULL,
     event_date DATE NOT NULL,
     club_name VARCHAR(100) NOT NULL,
+
     generated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     downloaded_at TIMESTAMP,
     download_count INTEGER DEFAULT 0,

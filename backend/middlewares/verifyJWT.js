@@ -18,7 +18,9 @@ const verifyJWT = (req, res, next) => {
     }
 
     console.log("Decoded payload:", decoded); // Log the decoded payload
+
     req.user = { userId: decoded.id }; // Ensure `id` is correct
+
 
     next();
   });
