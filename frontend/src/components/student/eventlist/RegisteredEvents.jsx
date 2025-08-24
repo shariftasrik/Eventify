@@ -1,9 +1,7 @@
-import getImgUrl from "../../../utils/event_utils";
-
 export default function RegisteredEvents({ events }) {
   return (
     <>
-      <h2 className="text-2xl font-bold mb-6">My Events</h2>
+      <h2 className="text-2xl font-bold mb-6">My Registered Events</h2>
 
       {events.length === 0 && (
         <p className="text-2xl text-red-500">Register an event</p>
@@ -16,8 +14,8 @@ export default function RegisteredEvents({ events }) {
         >
           <div className="w-16 h-16 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center">
             <img
-              src={getImgUrl(`${event.photo}`)}
-              alt="Gradient Graphic T-shirt"
+              src={event.photo}
+              alt={event.title}
               className="h-full w-auto object-cover"
             />
           </div>
