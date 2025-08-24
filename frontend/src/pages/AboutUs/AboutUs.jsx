@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import { Rocket, Sparkles, TrendingUp } from "lucide-react";
 
 export default function AboutUs() {
   const Motion = motion;
 
-  // simple stagger for nice entrances
+
   const fadeUp = {
     hidden: { opacity: 0, y: 14 },
     show: (i = 0) => ({
@@ -13,11 +14,47 @@ export default function AboutUs() {
     }),
   };
 
+
+  const tlContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    },
+  };
+  const tlItem = {
+    hidden: { opacity: 0, y: 18, filter: "blur(4px)" },
+    show: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { type: "spring", stiffness: 120, damping: 16 },
+    },
+  };
+  const milestones = [
+    {
+      date: "Q1 2025",
+      title: "Born at a Hackathon",
+      desc: "We prototyped Eventify to end registration chaos.",
+      Icon: Sparkles,
+    },
+    {
+      date: "Q2 2025",
+      title: "Beta with 5 Clubs",
+      desc: "Shipped clean cards, modal registration, admin tools.",
+      Icon: Rocket,
+    },
+    {
+      date: "Q3 2025",
+      title: "Campus‑wide Rollout",
+      desc: "Added analytics, filtering, pagination & a11y upgrades.",
+      Icon: TrendingUp,
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-indigo-50/20 to-purple-50/20">
-      {/* ===== Hero ===== */}
       <section className="relative overflow-hidden">
-        {/* soft radial glow */}
         <div className="pointer-events-none absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-fuchsia-400/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 left-[-10%] h-72 w-72 rounded-full bg-indigo-400/30 blur-3xl" />
 
@@ -41,7 +78,6 @@ export default function AboutUs() {
                 celebrate.
               </p>
 
-              {/* stats strip */}
               <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
                   { label: "Clubs", value: "15+" },
@@ -66,7 +102,6 @@ export default function AboutUs() {
               </div>
             </Motion.div>
 
-            {/* Illustration */}
             <Motion.div
               variants={fadeUp}
               initial="hidden"
@@ -90,7 +125,6 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ===== Mission & Values ===== */}
       <section className="py-10 md:py-14">
         <div className="container mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-6">
           <Motion.div
@@ -100,10 +134,8 @@ export default function AboutUs() {
             viewport={{ once: true, amount: 0.3 }}
             className="group relative rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-purple-50 border border-slate-200 shadow-md p-6 md:p-8 overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-xl"
           >
-            {/* subtle glow blob */}
             <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-indigo-400/20 blur-2xl group-hover:opacity-70 transition-opacity" />
 
-            {/* header badge */}
             <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 py-1 text-xs font-semibold shadow">
               🚀 Mission
             </div>
@@ -118,7 +150,6 @@ export default function AboutUs() {
               seconds.
             </p>
 
-            {/* feature list with icons */}
             <ul className="mt-6 space-y-3 text-slate-700">
               {[
                 "Simple publishing & approvals",
@@ -180,48 +211,58 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Timeline */}
       <section className="py-10">
         <div className="container mx-auto max-w-6xl px-4">
           <Motion.div
-            variants={fadeUp}
+            variants={tlContainer}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 md:p-8"
+            className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white/70 shadow-xl backdrop-blur p-6 md:p-10"
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-purple-50 text-purple-700 px-3 py-1 text-xs font-semibold">
+            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/30 [mask-image:radial-gradient(900px_450px_at_50%_-10%,black,transparent)]" />
+
+            <Motion.div
+              variants={tlItem}
+              className="inline-flex items-center gap-2 rounded-full bg-purple-50 text-purple-700 px-3 py-1 text-xs font-semibold shadow-sm"
+            >
               🗓️ Our Journey
-            </div>
+            </Motion.div>
 
             <div className="mt-8 grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  date: "Q1 2025",
-                  title: "Born at a Hackathon",
-                  desc: "We prototyped Eventify to end registration chaos.",
-                },
-                {
-                  date: "Q2 2025",
-                  title: "Beta with 5 Clubs",
-                  desc: "Shipped clean cards, modal registration, admin tools.",
-                },
-                {
-                  date: "Q3 2025",
-                  title: "Campus‑wide Rollout",
-                  desc: "Added analytics, filtering, pagination & a11y upgrades.",
-                },
-              ].map((t) => (
-                <div key={t.title} className="relative pl-5">
-                  <div className="absolute left-0 top-2 h-3 w-3 rounded-full bg-indigo-600" />
-                  <div className="text-[11px] uppercase tracking-wide text-slate-500">
-                    {t.date}
+              {milestones.map(({ date, title, desc, Icon }) => (
+                <Motion.article
+                  key={title}
+                  variants={tlItem}
+                  className="relative h-full rounded-xl border border-slate-200/70 bg-white/90 p-5 shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 rounded-lg bg-slate-900/90 p-2 text-white shadow">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <div className="text-[11px] uppercase tracking-wide text-slate-500">
+                        {date}
+                      </div>
+                      <h3 className="mt-0.5 font-semibold text-slate-900 leading-tight">
+                        {title}
+                      </h3>
+                    </div>
                   </div>
-                  <div className="mt-1 font-semibold text-slate-900">
-                    {t.title}
+
+                  <p className="text-sm text-slate-600 mt-3">{desc}</p>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700">
+                      Milestone
+                    </span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 text-indigo-700 px-2.5 py-1 text-[11px] font-medium">
+                      {date}
+                    </span>
                   </div>
-                  <p className="text-sm text-slate-600 mt-1">{t.desc}</p>
-                </div>
+
+                  <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 hover:opacity-100 [background:linear-gradient(120deg,transparent_20%,rgba(255,255,255,0.5)_40%,transparent_60%)]" />
+                </Motion.article>
               ))}
             </div>
           </Motion.div>
