@@ -1,18 +1,26 @@
 import { useState } from "react";
-import Navbar from "./Navbar/Navbar";
+import { useNavigate } from "react-router-dom"; // NEW
 import Logo from "../assets/Logo/frame.svg";
+import Navbar from "./Navbar/Navbar";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e?.preventDefault();
+    const q = searchTerm.trim();
+    navigate(q ? `/events?q=${encodeURIComponent(q)}` : "/events");
+  };
+
   return (
     <>
       <header className="py-4 px-4 md:px-8 relative">
-        {/* subtle, very light gradient panel */}
         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-white via-indigo-50/30 to-purple-50/30" />
 
         <div className="container mx-auto relative z-10 flex items-center justify-between">
-          {/* left: logo + brand */}
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -60,13 +68,25 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3 md:gap-4">
-            <div className="relative hidden md:block w-64">
+            <form
+              className="relative hidden md:block w-64"
+              onSubmit={handleSearch}
+            >
               <input
                 type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") setSearchTerm("");
+                }}
                 placeholder="Search for events..."
                 className="w-full bg-white/90 backdrop-blur-sm rounded-2xl py-3 pl-5 pr-12 text-sm border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 shadow-sm"
               />
-              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+              <button
+                type="submit"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                aria-label="Search"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -81,13 +101,14 @@ export default function Header() {
                     d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
                   />
                 </svg>
-              </span>
-            </div>
+              </button>
+            </form>
 
             <button
               type="button"
               className="md:hidden p-2.5 rounded-xl hover:bg-white/80"
               aria-label="Search"
+              onClick={() => handleSearch()}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,6 +152,7 @@ export default function Header() {
 
       <div className="mt-4 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
+      {/* sidebar  */}
       <div
         id="mobile-sidebar"
         className={`fixed inset-0 z-50 md:hidden ${
