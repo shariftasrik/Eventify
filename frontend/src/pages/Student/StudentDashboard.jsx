@@ -1,11 +1,17 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import Banner from "../../components/Banner";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header";
+import NewsLetter from "../../components/NewsLetter";
+import EventList from "../../components/student/eventlist/EventList";
 
 const StudentDashboard = () => {
   return (
     <div>
-      <h1>Student Dashboard</h1>
-      <Outlet />
+      <Header />
+      <Banner />
+      <EventList />
+      <NewsLetter />
+      <Footer />
     </div>
   );
 };
