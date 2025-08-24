@@ -9,6 +9,7 @@ import ContactUs from "./pages/ContactUs/ContactUs";
 import EventDetails from "./pages/EventDetails/EventDetails";
 import Events from "./pages/Events/Events";
 import Home from "./pages/Home/Home";
+import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -20,12 +21,14 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 
 // Student pages
+
 import MyEvents from "./pages/Student/MyEvents";
 import StudentDashboard from "./pages/Student/StudentDashboard";
 import StudentProfile from "./pages/Student/StudentProfile";
 
 // Admin pages
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminHome from "./pages/Admin/AdminHome";
 import Analytics from "./pages/Admin/Analytics";
 import CreateEvent from "./pages/Admin/CreateEvent";
 import EditEvent from "./pages/Admin/EditEvent";
@@ -36,6 +39,7 @@ import ManageEvents from "./pages/Admin/ManageEvents";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import NewsLetter from "./components/NewsLetter";
+
 
 
 // import ProtectedRoute from "./components/PermissionComponents/ProtectedRoute";
@@ -94,6 +98,7 @@ function App() {
             // </ProtectedRoute>
           }
         >
+          <Route index element={<AdminHome />} />
           <Route path="manage-events" element={<ManageEvents />} />
           <Route path="create-event" element={<CreateEvent />} />
           <Route path="edit-event/:id" element={<EditEvent />} />
