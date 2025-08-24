@@ -9,6 +9,7 @@ import EventDetails from "./pages/EventDetails/EventDetails";
 import Events from "./pages/Events/Events";
 import Home from "./pages/Home/Home";
 import VerifyEmailPage from "./pages/VerifyEmailPage/VerifyEmailPage";
+import FaqChatbot from "./pages/FAQChatbot/FAQChatbot";
 
 // Auth pages
 import Login from "./pages/Auth/Login";
@@ -100,6 +101,7 @@ function App() {
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/faq" element={<FaqChatbot />} />
         </Route>
         <Route path="/verify-email" element={<VerifyEmailPage />} />
 
